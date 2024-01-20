@@ -4,21 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+return new class extends Migration// controlo de versiones en base da datos, se peuden revertir
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up(): void// aqui se crean columnas bajo los nombre en ''
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->id();//columna
+            $table->string('name');//columna
+            $table->string('email')->unique();//columna- lo q almacenos en campo email debe ser unico, no puede haber duplciado en al bd
+            $table->timestamp('email_verified_at')->nullable(); //columna-fechas, verificar el correo e. se alamacena la fecha, este campo puede queda vacio 
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->rememberToken();// columna varchar 100, nombre remberToken, se va almacenar cada vez que de a  manterne la sesion
+            $table->timestamps();// columna-crea 2 columnas created at y updated at 
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('users'); // llama clase schema, elimina la tabla users 
     }
 };
