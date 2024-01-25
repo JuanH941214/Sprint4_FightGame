@@ -42,6 +42,8 @@ Route::get('/team/{team}/edit', TeamsController::class .'@edit')->name('team.edi
 Route::get('/showMatch', function () {return view('createMatch');});
 Route::post('/match', MatchesController::class .'@store')->name('match.store');
 Route::get('/createMatch', MatchesController::class .'@showMatchTeams')->name('match.get');// trae los equipos
+Route::get('/getMatches', MatchesController::class .'@show')->name('allMatches.get');// trae los equipos
+
 
 
 

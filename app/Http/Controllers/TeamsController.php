@@ -62,9 +62,11 @@ class TeamsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+      //dd($request->all());
         $request->validate([
-            'title' => 'required|max:255',
-            'body' => 'required',
+            'name' => 'required|max:255',
+            'trainer' => 'required',
+            'players' => 'required',
           ]);
           $team = Teams::find($id);
           $team->update($request->all());

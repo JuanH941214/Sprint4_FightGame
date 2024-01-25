@@ -20,11 +20,11 @@ class Matches extends Model
 
       public function teamLocal()
     {
-        return $this->belongsTo(Teams::class, 'local_team_id');
+        return $this->belongsTo(Teams::class, 'local_id');
     }
 
     public function teamGuest()
     {
-        return $this->belongsTo(Teams::class, 'guest_team_id');
+        return $this->belongsTo(Teams::class, 'guest_id');
     }
 }

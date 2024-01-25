@@ -18,14 +18,13 @@ class MatchesController extends Controller
     {
         
         $teams = Matches::all();
-        return view('/createMatch', compact('teams'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {   dd($request->all());
+    {   //dd($request->all());
         $request->validate([
             'local_id' => 'required|max:255',
             'guest_id' => [
@@ -38,7 +37,7 @@ class MatchesController extends Controller
             
           ]);
           Matches::create($request->all());
-          return redirect()->route('viewMatches')
+          return redirect()->route('allMatches.get')
             ->with('success', 'match created successfully.');
     }
 
@@ -47,11 +46,6 @@ class MatchesController extends Controller
      */
     public function showMatchTeams()
     {
-        //$matches = Matches::all(); 
-        //return view('/creatMatch', ['matches' => $matches]);
-       /////////////
-        //$teamsController = new TeamsController();
-        //$result=$teamsController->showNoview();*no funciono
         $availableTeams= Teams::all();
         return view('createMatch', compact('availableTeams'));
     
@@ -72,5 +66,11 @@ class MatchesController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function show()
+    {
+        $matches = Matches::all(); 
+        return view('/getMatches', ['matches' => $matches]);
     }
 }

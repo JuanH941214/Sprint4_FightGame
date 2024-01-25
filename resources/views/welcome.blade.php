@@ -16,4 +16,5 @@
     <a href="{{ url('/createMatch') }}">
         <button class="btn btn-primary">matches</button>    
     </a>
+
 @endsection
