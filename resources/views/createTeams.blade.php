@@ -1,3 +1,4 @@
+resources/views/welcome.blade.php
 <div>
     <!-- I have not failed. I've just found 10,000 ways that won't work. - Thomas Edison -->
     <!-- resources/views/registro.blade.php -->
@@ -11,21 +12,38 @@
 </head>
 <body>
     <h1>Registro de equipo </h1>
+
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger mt-3">
+            {{ session('error') }}
+        </div>
+    @endif
+
+
+    <form method="POST" action="{{ route('team.store') }}">
     @csrf
-
-    <form method="POST" action="{{ route('registro.submit') }}">
         
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+        <label for="name">Nombre del equipo:</label>
+        <input type="text" id="name" name="name" required>
 
-        <label for="nombre">Jugadores:</label>
-        <input type="text" id="nombre" name="nombre" required>
+        <label for="players">Jugadores:</label>
+        <input type="text" id="players" name="players" rows = "4" required>
 
-        <label for="email">entrenador:</label>
-        <input type="text" id="email" name="email" required>
+        <label for="trainer">entrenador:</label>
+        <input type="text" id="trainer" name="trainer" required>
 
-        <button type="submit">Registrar</button>
+        <button type="submit" class ="btn btn-primary">Registrar</button>
+        
     </form>
+    <a href="{{ url('/') }}">
+    <button  class ="btn btn-primary">home</button>    
+    </a>
 </body>
 </html>
 

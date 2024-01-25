@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('players');
             $table->string('trainer');
-            $table->enum('type',['visitante'.'local']);
+            //$table->enum('type',['visitante'.'local']);
             $table->timestamps();
 
 

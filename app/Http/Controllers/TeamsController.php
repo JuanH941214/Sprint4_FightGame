@@ -14,7 +14,7 @@ class TeamsController extends Controller
     public function index()
     {
     $teams = Teams::all();
-    return view('welcome.blade.php', compact('teams'));
+    //return view('/', compact('teams'));
 
     }
 
@@ -23,22 +23,38 @@ class TeamsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+      //  dd($request->all());
+
+        /*$request->validate([
             'name' => 'required|max:255',
             'players' => 'required',
             'trainer' => 'required'
-          ]);
+          ]);*/
           Teams::create($request->all());
-          return redirect()->route('welcome.blade.php')
+          return redirect()->route('welcome')
             ->with('success', 'Team created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $teams = Teams::all(); 
+        return view('/getTeams', ['teams' => $teams]);
+    }
+
+    public function showNoview()
+    {
+      $teams = Teams::all(); 
+      return view('/createMatch', ['teams' => $teams]);
+    }
+
+
+    public function showTeam(string $id)
+    {
+      $post = Teams::find($id);
+      return view('posts.show', compact('post'));
     }
 
     /**
@@ -46,7 +62,14 @@ class TeamsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required',
+          ]);
+          $team = Teams::find($id);
+          $team->update($request->all());
+          return redirect()->route('welcome')
+            ->with('success', 'Post updated successfully.');
     }
 
     /**
@@ -56,4 +79,10 @@ class TeamsController extends Controller
     {
         //
     }
+
+    public function edit($id)
+  {
+    $team = Teams::find($id);
+    return view('/editTeam', compact('team'));
+  }
 }

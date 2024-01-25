@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeamsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/createTeams', function () {
-    return view('createTeams');
-});
+})->name('welcome');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -31,13 +31,20 @@ Route::middleware('auth')->group(function () {
 });
 // routes/web.php
 
-Route::post('/registro', function () {
-    // Lógica de procesamiento del formulario aquí
-    // Puedes acceder a los datos del formulario con request('nombre'), request('email'), etc.
-    // Puedes redirigir o realizar otras acciones según tus necesidades
+Route::get('/createTeams', function () {return view('createTeams');});
+Route::post('/posts', TeamsController::class .'@store')->name('team.store');
+Route::get('/showTeams', [TeamsController::class, 'show']);
+Route::put('/updateTeam/{team}', TeamsController::class .'@update')->name('team.update'); //update
+Route::get('/team/{team}/edit', TeamsController::class .'@edit')->name('team.edit');
 
-    return 'Formulario procesado con éxito';
-})->name('registro.submit');
+
+
+Route::get('/showMatch', function () {return view('createMatch');});
+Route::post('/match', MatchesController::class .'@store')->name('match.store');
+Route::get('/createMatch', MatchesController::class .'@showMatchTeams')->name('match.get');// trae los equipos
+
+
+
 
 
 

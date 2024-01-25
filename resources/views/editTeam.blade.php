@@ -1,8 +1,9 @@
+resources/views/updateTeam.blade.php
 <div class="container h-100 mt-5">
   <div class="row h-100 justify-content-center align-items-center">
     <div class="col-10 col-md-8 col-lg-6">
-      <h3>Update team</h3>
-      <form action="{{ route('team.update', $team->id) }}" method="post">
+      <h3>Update Post</h3>
+      <form action="{{ route('posts.update', $post->id) }}" method="post">
         @csrf
         @method('PUT')
         <div class="form-group">
