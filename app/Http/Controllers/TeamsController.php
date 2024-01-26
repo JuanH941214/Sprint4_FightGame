@@ -23,14 +23,24 @@ class TeamsController extends Controller
      */
     public function store(Request $request)
     {
-      //  dd($request->all());
+        //dd($request->all());
 
-        /*$request->validate([
+        $request->validate([
             'name' => 'required|max:255',
-            'players' => 'required',
-            'trainer' => 'required'
-          ]);*/
-          Teams::create($request->all());
+            'power' => 'required|integer',
+            'trainer' => 'required',
+            'fighter_image' => 'required'
+        ]);
+        $power = intval($request->input('power'));
+        //dd($request->all());
+        Teams::create([
+          'name' => $request->input('name'),
+          'power' => $power,
+          'trainer' => $request->input('trainer'),
+          'fighter_image' => $request->input('fighter_image'),
+      ]);
+
+         // Teams::create($request->all());
           return redirect()->route('welcome')
             ->with('success', 'Team created successfully.');
     }
@@ -66,7 +76,7 @@ class TeamsController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'trainer' => 'required',
-            'players' => 'required',
+            'power' => 'required',
           ]);
           $team = Teams::find($id);
           $team->update($request->all());

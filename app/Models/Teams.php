@@ -12,8 +12,9 @@ class Teams extends Model
 
     protected $fillable = [
         'name',
-        'players',
         'trainer',
+        'power',
+        'fighter_image'
       ];
 
       public function matches()

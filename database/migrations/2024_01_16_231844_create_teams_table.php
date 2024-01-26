@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('players');
             $table->string('trainer');
-            //$table->enum('type',['visitante'.'local']);
+            $table->integer('power');
+            $table->string('fighter_image');
             $table->timestamps();
 
 

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('guest_id')->references('id')->on('teams');
             $table->timestamps();
             $table->date('date')->nullable();
-            $table->string('location');
+            $table->string('result');
+
             
         });
     }

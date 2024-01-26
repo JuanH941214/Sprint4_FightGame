@@ -1,7 +1,7 @@
 <!-- resources/views/equipos.blade.php -->
 @extends('layouts.app')
-
 @section('content')
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,7 +27,7 @@
                 <tr>
                     <td>{{ $match->teamLocal->name }}</td>
                     <td>{{ $match->teamGuest->name }}</td>
-                    <td>{{ $match->location}}</td>
+                    <td>{{ $match->result}}</td>
                     <td>{{ $match->date }}</td>
                 </tr>
             @endforeach

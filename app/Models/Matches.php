@@ -14,7 +14,7 @@ class Matches extends Model
         'local_id',
         'guest_id',
         'date',
-        'location',
+        'result',
       ];
 
 

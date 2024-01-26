@@ -1,6 +1,5 @@
 <!-- resources/views/equipos.blade.php -->
 @extends('layouts.app')
-
 @section('content')
 <!DOCTYPE html>
 <html lang="es">
@@ -25,7 +24,7 @@
             @foreach($teams as $team)
                 <tr>
                     <td>{{ $team->name }}</td>
-                    <td>{{ $team->players }}</td>
+                    <td>{{ $team->power }}</td>
                     <td>{{ $team->trainer }}</td>
                     <td>
                         <a href="{{ route ('team.edit',['team' => $team->id]) }}">

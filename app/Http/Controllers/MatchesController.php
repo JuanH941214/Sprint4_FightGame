@@ -32,7 +32,7 @@ class MatchesController extends Controller
                 Rule::notIn([$request->input('local_team_id')]),
             ],
             'date' => 'required',
-            'location' => 'required',
+            'result' => 'required',
             
             
           ]);
