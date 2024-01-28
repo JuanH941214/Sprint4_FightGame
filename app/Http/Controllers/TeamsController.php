@@ -54,11 +54,11 @@ class TeamsController extends Controller
         return view('/getTeams', ['teams' => $teams]);
     }
 
-    public function showNoview()
-    {
-      $teams = Teams::all(); 
-      return view('/createMatch', ['teams' => $teams]);
-    }
+   // public function showNoview()
+    //{
+      //$teams = Teams::all(); 
+      //return view('/createMatch', ['teams' => $teams]);
+    //}
 
 
     public function showTeam(string $id)

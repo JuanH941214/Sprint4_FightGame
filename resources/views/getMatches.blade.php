@@ -7,19 +7,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partidos de Fútbol</title>
+    <title>Partidos</title>
 </head>
 <body>
-
-    <h1>Match</h1>
-
-    <table>
+    <h1 class="font-bold text-5xl">Match</h1>
+    <table class="mt-8">
         <thead>
             <tr>
-                <th>Local Team</th>
-                <th>Guest Team</th>
-                <th>Location</th>
-                <th>Date</th>
+                <th class="py-2 px-4 border-b" >Local Team</th>
+                <th class="py-2 px-4 border-b" >Guest Team</th>
+                <th class="py-2 px-4 border-b" >WINNER</th>
+                <th class="py-2 px-4 border-b" >Date</th>
             </tr>
         </thead>
         <tbody>
@@ -29,13 +27,17 @@
                     <td>{{ $match->teamGuest->name }}</td>
                     <td>{{ $match->result}}</td>
                     <td>{{ $match->date }}</td>
+                    <form action="{{ route('delete.match', ['id'=> $match->id]) }}" method="post" >
+                    @csrf;
+                    @method('DELETE')
+                    <td><button class ="rounded-md border bg-yellow-600 px-3 py-2 font-bold" type="submit">Delete</button></td>  
+
+                    </form>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    <a href="{{ url('/') }}">
-    <button  class ="btn btn-primary">home </button>    
-    </a>
+ 
 
 </body>
 </html>

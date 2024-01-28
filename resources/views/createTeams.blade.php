@@ -17,13 +17,13 @@
             <form method="POST" action="{{ route('team.store') }}" class="space-y-4 sm:w-1/2 sm:max-w-md mt-8">
                 @csrf
 
-                <label for="name">fighter name:</label>
+                <label for="name">Fighter's name:</label>
                 <input type="text" id="name" name="name" class="w-full border p-2 rounded sm:w-64 required">
 
-                <label for="power">set power:</label>
+                <label for="power">Set power:</label>
                 <input type="number" id="power" name="power" class="w-full border p-2 rounded sm:w-64 required">
 
-                <label for="trainer">trainer(your name):</label>
+                <label for="trainer">Trainer(your name):</label>
                 <input type="text" id="trainer" name="trainer" class="w-full border p-2 rounded sm:w-64 required">
 
                 <label for= "fighter_image">Fighter:</label>

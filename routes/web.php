@@ -43,6 +43,11 @@ Route::get('/showMatch', function () {return view('createMatch');});
 Route::post('/match', MatchesController::class .'@store')->name('match.store');
 Route::get('/createMatch', MatchesController::class .'@showMatchTeams')->name('match.get');// trae los equipos
 Route::get('/getMatches', MatchesController::class .'@show')->name('allMatches.get');// trae los equipos
+Route::get('/fight/{id}', MatchesController::class .'@showMatch')->name('fight.get');// empieza la pelea trae el id del match y los luchadores
+Route::post('/fight', MatchesController::class .'@determineWinner')->name('winner.get');// empieza la pelea trae el id del match y los luchadores
+Route::delete('/delete/{id}', MatchesController::class .'@destroy')->name('delete.match');// empieza la pelea trae el id del match y los luchadores
+
+
 
 
 

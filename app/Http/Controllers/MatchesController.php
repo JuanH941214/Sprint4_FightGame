@@ -36,8 +36,8 @@ class MatchesController extends Controller
             
             
           ]);
-          Matches::create($request->all());
-          return redirect()->route('allMatches.get')
+          $match=Matches::create($request->all());
+          return redirect()->route('fight.get',['id'=> $match->id])
             ->with('success', 'match created successfully.');
     }
 
@@ -65,12 +65,55 @@ class MatchesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $match = Matches::find($id);
+        $match->delete();
+        return redirect()->route('allMatches.get')
+        ->with('success', 'Post deleted successfully');
     }
 
     public function show()
     {
         $matches = Matches::all(); 
         return view('/getMatches', ['matches' => $matches]);
+    }
+    public function showMatch(string $id)
+    {
+        $match = Matches::with('teamLocal','teamGuest')->find($id); 
+        return view('/fight', ['match' => $match]);
+    }
+
+    public function determineWinner(Request $request)
+    {
+        $localPower = intval($request->input('localPower'));
+        $guestPower = intval($request->input('guestPower'));
+        $localName = $request->input('idLocal');
+        $guestName = $request->input('idGuest');
+
+        $localResult=$this->calculateResult($localPower);
+        $guestResult=$this->calculateResult($guestPower);
+    
+      
+        if ($localResult>$guestResult){
+            $winner=$localResult;
+            $winnerName=$localName;   
+        }
+        elseif($localResult<$guestResult){
+            $winner=$guestResult;
+            $winnerName=$guestName;  
+        }
+        else{
+            $winner="it's a tie";
+        }
+        $match=Matches::find($request->input('match_id'));
+        $match->result=$winnerName;
+        $match->save();
+        return view('fight', ['winner' => $winner, 'match'=>$match, 'winnerName'=>$winnerName]);
+
+    }
+
+    public function calculateResult(int $power){
+        $probability=(max(1,100-$power));
+        $finalPower=rand(-50,$probability);
+        return $finalPower;
     }
 }

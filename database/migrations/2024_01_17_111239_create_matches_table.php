@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('matches', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('local_id')->references('id')->on('teams');
-            $table->unsignedBigInteger('guest_id')->references('id')->on('teams');
+            $table->unsignedBigInteger('local_id')->references('id')->on('teams')->onDelete('cascade');
+            $table->unsignedBigInteger('guest_id')->references('id')->on('teams')->onDelete('cascade');
             $table->timestamps();
             $table->date('date')->nullable();
-            $table->string('result');
+            $table->string('result')->nullable();
 
             
         });
