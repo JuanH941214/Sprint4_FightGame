@@ -83,6 +83,10 @@ class TeamsController extends Controller
             'name' => 'required|max:255',
             'trainer' => 'required',
             'power' => 'required',
+          ],[
+            'name.required' => "please enter your figther's name",
+            'power.required' => "Please set your fighter's power.",
+            'trainer.required' => 'please enter your name',  
           ]);
           $team = Teams::find($id);
           $team->update($request->all());
