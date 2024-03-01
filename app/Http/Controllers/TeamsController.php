@@ -8,42 +8,48 @@ use App\Models\Teams;
 
 class TeamsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
+  /**
+   * Display a listing of the resource.
+   */
+  public function index()
+  {
     $teams = Teams::all();
     //return view('/', compact('teams'));
 
-    }
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //dd($request->all());
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(Request $request)
+  {
+    //dd($request->all());
 
-        $request->validate([
-            'name' => 'required|max:255',
-            'power' => 'required|integer',
-            'trainer' => 'required',
-            'fighter_image' => 'required'
-        ]);
-        $power = intval($request->input('power'));
-        //dd($request->all());
-        Teams::create([
-          'name' => $request->input('name'),
-          'power' => $power,
-          'trainer' => $request->input('trainer'),
-          'fighter_image' => $request->input('fighter_image'),
-      ]);
+    $request->validate([
+      'name' => 'required|max:255',
+      'power' => 'required|integer',
+      'trainer' => 'required',
+      'fighter_image' => 'required'
+    ], [
+      'name.required' => "please enter your figther's name",
+      'power.required' => "Please set your fighter's power.",
+      'trainer.required' => 'please enter your name',
+      'fighter_image.required' => 'please select one of the figthers'
 
-         // Teams::create($request->all());
-          return redirect()->route('welcome')
-            ->with('success', 'Team created successfully.');
-    }
+    ]);
+    $power = intval($request->input('power'));
+    //dd($request->all());
+    Teams::create([
+      'name' => $request->input('name'),
+      'power' => $power,
+      'trainer' => $request->input('trainer'),
+      'fighter_image' => $request->input('fighter_image'),
+    ]);
+
+    // Teams::create($request->all());
+    return redirect()->route('welcome')
+      ->with('success', 'Team created successfully.');
+  }
 
     /**
      * Display the specified resource.
