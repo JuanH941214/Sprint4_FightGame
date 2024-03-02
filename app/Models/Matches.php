@@ -11,6 +11,7 @@ class Matches extends Model
     protected $table = 'matches'; // Nombre de la tabla en la base de datos
 
     protected $fillable = [
+        'user_id',
         'local_id',
         'guest_id',
         'date',
@@ -26,5 +27,10 @@ class Matches extends Model
     public function teamGuest()
     {
         return $this->belongsTo(Teams::class, 'guest_id');
+    }
+
+    public function userTrainer()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

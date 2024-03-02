@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('power');
             $table->string('fighter_image');
             $table->timestamps();
-
+            $table->unsignedBigInteger('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }
