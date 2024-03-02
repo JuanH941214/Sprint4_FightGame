@@ -42,4 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function matches()
+    {
+        return $this->hasMany(Matches::class, 'user_id');//relación para obtener todos los partidos asociados con ese equipo:
+    }
+
+    public function teams()
+    {
+        return $this->hasMany(Team::class);
+    }
 }
