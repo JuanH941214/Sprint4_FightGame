@@ -26,6 +26,7 @@ class MatchesController extends Controller
     public function store(Request $request)
     {   //dd($request->all());
         $request->validate([
+            'user_id' => 'required',
             'local_id' => 'required|max:255',
             'guest_id' => [
                 'required',
