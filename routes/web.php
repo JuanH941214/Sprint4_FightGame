@@ -3,6 +3,7 @@
 use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamsController;
+use App\Models\Teams;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,9 +34,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/createTeams', function () {return view('createTeams');});
 Route::post('/posts', TeamsController::class .'@store')->name('team.store');
-Route::get('/showTeams', [TeamsController::class, 'show']);
+Route::get('/showTeams', [TeamsController::class, 'show'])->name('teams.show');
 Route::put('/updateTeam/{team}', TeamsController::class .'@update')->name('team.update'); //update
 Route::get('/team/{team}/edit', TeamsController::class .'@edit')->name('team.edit');
+Route::delete('/delete/team/{id}', [TeamsController::class, 'destroy'])->name('delete');
 
 
 
