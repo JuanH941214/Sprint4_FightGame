@@ -14,7 +14,8 @@ class Teams extends Model
         'name',
         'trainer',
         'power',
-        'fighter_image'
+        'fighter_image',
+        'user_id',
       ];
 
       public function matches()
