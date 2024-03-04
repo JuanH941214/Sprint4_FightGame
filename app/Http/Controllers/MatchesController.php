@@ -30,7 +30,7 @@ class MatchesController extends Controller
             'local_id' => 'required|max:255',
             'guest_id' => [
                 'required',
-                Rule::notIn([$request->input('local_team_id')]),
+                Rule::notIn([$request->input('local_id')]),
             ],
             'date' => 'required',
             'result' => 'required',
@@ -47,10 +47,11 @@ class MatchesController extends Controller
      */
     public function showMatchTeams()
     {
+        $user = auth()->user();
+        $userId = $user->id;
         $availableTeams= Teams::all();
-        return view('createMatch', compact('availableTeams'));
+        return view('createMatch', compact('availableTeams','userId'));
     
-
     }
 
     /**
