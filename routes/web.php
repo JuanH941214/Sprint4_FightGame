@@ -4,6 +4,8 @@ use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
+
 
 use App\Models\Teams;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +26,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('welcome');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -43,8 +45,11 @@ Route::post('/signUp', [UserController::class, 'create'])->name('registrar');
 
 
 //
-
-Route::get('/createTeams', function () {return view('createTeams');});
+Route::middleware('auth')->get('/createTeams', function () {
+    $userId = Auth::id();
+    return view('createTeams', ['userId' => $userId]);
+});
+//Route::get('/createTeams', function () {return view('createTeams');});
 Route::post('/posts', TeamsController::class .'@store')->name('team.store');
 Route::get('/showTeams', [TeamsController::class, 'show'])->name('teams.show');
 Route::put('/updateTeam/{team}', TeamsController::class .'@update')->name('team.update'); //update
