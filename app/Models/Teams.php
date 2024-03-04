@@ -19,9 +19,9 @@ class Teams extends Model
       ];
 
       public function matches()
-    {
-        return $this->hasMany(Matches::class, 'local_id');//relación para obtener todos los partidos asociados con ese equipo:
-    }
+      {
+          return $this->hasMany(Matches::class, 'local_id');
+      }
     public function guestMatches()
     {
         return $this->hasMany(Matches::class, 'guest_id');
