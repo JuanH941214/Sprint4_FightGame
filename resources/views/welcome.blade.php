@@ -28,14 +28,14 @@
         </a>
 
         <a href="{{ url('/createMatch') }}">
-            <button id="playButton" class="rounded-md border bg-red-600 px-7 py-4 text-white font-bold">PLAY A MATCH</button>
+            <button class="rounded-md border bg-red-600 px-7 py-4 text-white font-bold">PLAY A MATCH</button>
         </a>
 
         <a href="{{ url('/showTeams') }}">
             <button class="rounded-md border bg-yellow-600 px-7 py-4 font-bold">SHOW YOUR FIGHTERS</button>
         </a>
+
     </div>   
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ asset('/js/popup.js') }}"></script> 
+ 
 
 @endsection

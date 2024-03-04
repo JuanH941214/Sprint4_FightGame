@@ -3,6 +3,8 @@
 use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\UserController;
+
 use App\Models\Teams;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 // routes/web.php
+
+//login
+Route::get('/login', [UserController::class, 'loginView'])->name('login');
+Route::post('/login', [UserController::class, 'login']);
+//
 
 Route::get('/createTeams', function () {return view('createTeams');});
 Route::post('/posts', TeamsController::class .'@store')->name('team.store');
