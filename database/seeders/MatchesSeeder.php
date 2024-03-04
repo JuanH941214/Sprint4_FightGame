@@ -31,6 +31,7 @@ class MatchesSeeder extends Seeder
                 'user_id' => $user->id,
                 'local_id' => $team->id,
                 'guest_id' => $this->getRandomId($teams,$team->id),
+                'result' => rand(0, 1) == 0 ? $team->id : $this->getRandomId($teams, $team->id),
             ]);
         }         
        }
