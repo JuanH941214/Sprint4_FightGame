@@ -19,15 +19,20 @@
                 <!--  <a href="{{ url('/createTeams') }}" class="hover:text-gray-300">Show teams</a>-->
                 <a href="{{ url('/getMatches') }}" class="hover:text-gray-300">Show matches</a>
                 <a href="{{ url('/showTeams') }}" class="hover:text-gray-300">Figthers</a>
-                <div class="flex items-center">
-            @if (auth()->check())
-                <!-- Usuario autenticado, muestra el enlace de Logout con estilo diferente en hover -->
-                <a href="{{ url('logout') }}" class="font-bold transition hover:text-yellow-300">Logout</a>
-            @else
-                <!-- Usuario no autenticado, muestra el enlace de Login con estilo diferente en hover -->
-                <a href="{{ url('login') }}" class="font-bold transition hover:text-yellow-300">Login</a>
-            @endif
-        </div>
+                <div class="flex items-right ml-auto">
+                    @if (auth()->check())
+                    <!-- Usuario autenticado, muestra el enlace de Logout con estilo diferente en hover -->
+                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="font-bold transition hover:text-yellow-300">Logout</button>
+                    </form>
+                    @else
+                    <!-- Usuario no autenticado, muestra el enlace de Login con estilo diferente en hover -->
+                    <a href="{{ url('login') }}" class="font-bold transition hover:text-yellow-300">Login</a>
+                    @endif
+                </div>
+                <a href="{{ url('/signUp') }}" class="hover:text-gray-300">sign Up</a>
+
             </div>
         </nav>
 
