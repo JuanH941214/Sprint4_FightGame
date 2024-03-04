@@ -23,15 +23,16 @@
         <tbody>
             @foreach($matches as $match)
                 <tr>
+                    
                     <td>{{ $match->teamLocal->name }}</td>
                     <td>{{ $match->teamGuest->name }}</td>
                     <td>{{ $match->result}}</td>
                     <td>{{ $match->date }}</td>
                     <form action="{{ route('delete.match', ['id'=> $match->id]) }}" method="post" >
-                    @csrf;
+                    @csrf
                     @method('DELETE')
-                    <td><button class ="rounded-md border bg-yellow-600 px-3 py-2 font-bold" type="submit">Delete</button></td>  
-
+                    <td>
+                    <button class ="rounded-md border bg-yellow-600 px-3 py-2 font-bold" type="submit">Delete</button></td>  
                     </form>
                 </tr>
             @endforeach
