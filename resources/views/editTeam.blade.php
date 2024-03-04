@@ -28,7 +28,7 @@
         </div>
         <div class="mb-4">
           <label for="trainer" class="block text-sm font-medium text-gray-700">Trainer Name:</label>
-          <input type="text" class="mt-1 p-2 w-full border rounded-md" id="trainer" name="trainer" value="{{ $team->trainer }}">
+          <input type="text" class="mt-1 p-2 w-full border rounded-md" id="trainer" name="trainer" value="{{ $team->trainer }}"readonly>
         </div>
         <div class="mb-4">
           <label for="power" class="block text-sm font-medium text-gray-700">Set Power:</label>

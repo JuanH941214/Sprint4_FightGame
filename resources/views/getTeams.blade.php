@@ -21,7 +21,7 @@
                     <th class="py-2 px-4 border-b">Figther</th>
                     <th class="py-2 px-4 border-b">Power</th>
                     <th class="py-2 px-4 border-b">Trainer</th>
-                    <th class="py-2 px-4 border-b">Actions</th>
+                    <th class="py-2 px-4 border-b"></th>
                 </tr>
             </thead>
             <tbody>

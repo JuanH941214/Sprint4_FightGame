@@ -27,11 +27,13 @@
                         <button type="submit" class="font-bold transition hover:text-yellow-300">Logout</button>
                     </form>
                     @else
-                    <!-- Usuario no autenticado, muestra el enlace de Login con estilo diferente en hover -->
-                    <a href="{{ url('login') }}" class="font-bold transition hover:text-yellow-300">Login</a>
+                    <!-- Usuario no autenticado, muestra el enlace de Login y Sign Up con espacio entre ellos -->
+                    <div class="flex items-center space-x-8">
+                        <a href="{{ url('login') }}" class="font-bold transition hover:text-yellow-300">Login</a>
+                        <a href="{{ url('/signUp') }}" class="hover:text-gray-300 font-bold">Sign Up</a>
+                    </div>
                     @endif
                 </div>
-                <a href="{{ url('/signUp') }}" class="hover:text-gray-300">sign Up</a>
 
             </div>
         </nav>

@@ -13,7 +13,7 @@ class UserController extends Controller
 
     public function loginView()
     {
-        return view('auth.login');
+        return view('login');
     }
 
     public function login(Request $request)

@@ -29,12 +29,13 @@ class TeamsController extends Controller
       'name' => 'required|max:255',
       'power' => 'required|integer',
       'trainer' => 'required',
-      'fighter_image' => 'required'
+      'fighter_image' => 'required',
+      'user_id'=>'required'
     ], [
       'name.required' => "please enter your figther's name",
       'power.required' => "Please set your fighter's power.",
       'trainer.required' => 'please enter your name',
-      'fighter_image.required' => 'please select one of the figthers'
+      'fighter_image.required' => 'please select one of the figthers',
 
     ]);
     $power = intval($request->input('power'));
@@ -44,9 +45,11 @@ class TeamsController extends Controller
       'power' => $power,
       'trainer' => $request->input('trainer'),
       'fighter_image' => $request->input('fighter_image'),
+      'user_id'=>$request->input('user_id')
     ]);
 
     // Teams::create($request->all());
+    session()->flash('success', '¡fighter created!');
     return redirect()->route('welcome')
       ->with('success', 'Team created successfully.');
   }

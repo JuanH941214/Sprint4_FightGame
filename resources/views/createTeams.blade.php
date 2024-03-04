@@ -39,7 +39,9 @@
                 <input type="number" id="power" name="power" class="w-full border p-2 rounded sm:w-64 required">
 
                 <label for="trainer">Trainer(your name):</label>
-                <input type="text" id="trainer" name="trainer" class="w-full border p-2 rounded sm:w-64 required">
+                <input type="text" id="trainer" name="trainer" value="{{Auth::user()->name}}" class="w-full border p-2 rounded sm:w-64 required">
+                <input type="hidden" name="user_id" value="{{ $userId }}">
+
 
                 <label for="fighter_image">Fighter:</label>
                 <select id="fighter_image" name="fighter_image" class="w-full border p-2 rounded sm:w-64 required">
