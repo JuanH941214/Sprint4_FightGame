@@ -49,10 +49,13 @@
         <input type="text" id="result" name="result" class="hidden" value="default_value" required>
         <label for="date">Match date:</label>
         <input class="mt-2" type="date" id="date" name="date" required>
+        <input class= "hidden" type="number" name="user_id" class="hidden" value="{{$userId}}">
+
 
         <div>
             <button type="submit" class="rounded-md border bg-yellow-600 px-7 py-4 font-bold mt-8 "> start fight </button>
         </div>
+       
     </form>
 
 
