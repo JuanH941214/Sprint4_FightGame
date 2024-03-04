@@ -97,13 +97,19 @@ class TeamsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    
     public function destroy($id)
     {
       //dd('Reached TeamsController@destroy');
       $figther= Teams::find($id);
       if($figther){
+        $figther->matches()->where('local_id',$figther->id)->delete();
+        $figther->guestMatches()->where('guest_id', $figther->id)->delete();
         $figther->delete();
-        return redirect()->route('teams.show');
+        //$figther->delete();
+        return redirect()->route('teams.show')
+        ->with('success', 'Equipo y partidos relacionados eliminados correctamente.');
+
       }
       else{
         return('figther not found');
