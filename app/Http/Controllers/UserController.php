@@ -47,22 +47,27 @@ class UserController extends Controller
 
         return redirect('/');
     }
+    public function signUpView()
+    {
+        return view('register');
+    }
 
     protected function create(Request $request)
     {
         $data = $request->validate([
             'name' => 'required|unique:users,name',
             'email'=> 'required|unique:users,email',
-            'password'=> 'required|string|min:8|confirmed',
+            'password'=> 'required|string|min:8',
 
         ]);
 
 
-        return User::create([
+        User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        return view('welcome');
     }
 
    

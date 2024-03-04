@@ -37,6 +37,11 @@ Route::middleware('auth')->group(function () {
 //login
 Route::get('/login', [UserController::class, 'loginView'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/signUp', [UserController::class, 'signUpview'])->name('signUp');
+Route::post('/signUp', [UserController::class, 'create'])->name('registrar');
+
+
 //
 
 Route::get('/createTeams', function () {return view('createTeams');});
