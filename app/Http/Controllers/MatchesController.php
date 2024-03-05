@@ -52,7 +52,7 @@ class MatchesController extends Controller
         $user = auth()->user();
         $isAuthenticated = Auth::check();
         if(!$user){
-            return redirect()->route('welcome')->with('error', 'Por favor, inicia sesión para jugar.');
+            return redirect()->route('welcome')->with('error', 'Please login before trying to play');
         }
         $userId = $user->id;
         $availableTeams= Teams::all();
