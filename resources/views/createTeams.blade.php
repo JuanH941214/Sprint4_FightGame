@@ -39,7 +39,7 @@
                 <input type="number" id="power" name="power" class="w-full border p-2 rounded sm:w-64 required">
 
                 <label for="trainer">Trainer(your name):</label>
-                <input type="text" id="trainer" name="trainer" value="{{Auth::user()->name}}" class="w-full border p-2 rounded sm:w-64 required">
+                <input type="text" id="trainer" name="trainer" value="{{Auth::user()->name}}" class="w-full border p-2 rounded sm:w-64 required"readonly>
                 <input type="hidden" name="user_id" value="{{ $userId }}">
 
 

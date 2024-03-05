@@ -6,6 +6,8 @@ use App\Models\Matches;
 use App\Models\Teams;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -48,6 +50,10 @@ class MatchesController extends Controller
     public function showMatchTeams()
     {
         $user = auth()->user();
+        $isAuthenticated = Auth::check();
+        if(!$user){
+            return redirect()->route('welcome')->with('error', 'Por favor, inicia sesión para jugar.');
+        }
         $userId = $user->id;
         $availableTeams= Teams::all();
         return view('createMatch', compact('availableTeams','userId'));
